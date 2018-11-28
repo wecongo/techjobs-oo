@@ -5,6 +5,7 @@ import org.launchcode.models.Employer;
 import org.launchcode.models.Location;
 import org.launchcode.models.PositionType;
 import org.launchcode.models.data.JobData;
+import org.launchcode.models.Job;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -22,8 +23,17 @@ public class JobForm {
     @NotNull
     private int employerId;
 
+    @NotNull
+    private int locationId;
+
+    @NotNull
+    private int coreCompetencyId;
+
+    @NotNull
+    private int positionTypeId;
+
     /*
-        TODO #3 - CHECK -    Included other fields needed to create a job,
+        TODO #3 - Check? -    Included other fields needed to create a job,
         with correct validation attributes and display names.
         Don't forget to add getters and setters
 
@@ -39,7 +49,7 @@ public class JobForm {
         JobData jobData = JobData.getInstance();
 
         /*
-            TODO #4 - CHECK - populate the other ArrayList collections needed in the view
+            TODO #4 -  populate the other ArrayList collections needed in the view
         */
 
         employers = jobData.getEmployers().findAll();
@@ -48,6 +58,36 @@ public class JobForm {
         positionTypes = jobData.getPositionTypes().findAll();
 
     }
+
+    public Job convertToJob(){
+
+        return new Job(this.name,
+                this.getEmployer(),
+                this.getLocation(),
+                this.getPositionType(),
+                this.getCoreCompetency()
+        );
+
+    }
+
+    //getters for returning the Job that was created.
+
+    public Employer getEmployer(){
+        return employers.get(this.getEmployerId());
+    }
+
+    public Location getLocation(){
+        return locations.get(this.getLocationId());
+    }
+
+    public PositionType getPositionType(){
+        return positionTypes.get(this.getPositionTypeId());
+    }
+
+    public CoreCompetency getCoreCompetency(){
+        return coreCompetencies.get(this.getCoreCompetencyId());
+    }
+
 //Name
     public String getName() {
         return name;
@@ -60,7 +100,7 @@ public class JobForm {
 
     //Employers
     public int getEmployerId() {
-        return employerId;
+        return employerId-1;
     }
 
     public void setEmployerId(int employerId) {
@@ -78,6 +118,14 @@ public class JobForm {
 
 
 //Location
+    public int getLocationId() {
+    return locationId;
+}
+
+    public void setLocationId(int locationId) {
+        this.locationId = locationId;
+    }
+
     public ArrayList<Location> getLocations() {
         return locations;
     }
@@ -88,6 +136,14 @@ public class JobForm {
 
 
 //skill
+    public int getCoreCompetencyId() {
+    return coreCompetencyId;
+}
+
+    public void setCoreCompetencyId(int coreCompetencyId) {
+        this.coreCompetencyId = coreCompetencyId;
+    }
+
     public ArrayList<CoreCompetency> getCoreCompetencies() {
         return coreCompetencies;
     }
@@ -97,6 +153,14 @@ public class JobForm {
     }
 
 //PositionType
+public int getPositionTypeId() {
+    return positionTypeId;
+}
+
+    public void setPositionTypeId(int positionTypeId) {
+        this.positionTypeId = positionTypeId;
+    }
+
     public ArrayList<PositionType> getPositionTypes() {
         return positionTypes;
     }

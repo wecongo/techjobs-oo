@@ -64,15 +64,9 @@ public class JobController {
         // redirect to the job detail view for the new Job.
 
 
-        if (jobForm.getName()!= null){
+        if (jobForm.getName()!= ""){
 
-            Job toAdd = new Job(jobForm.getName(),
-                    jobForm.getEmployers().get(jobForm.getEmployerId()),
-                    jobForm.getLocations().get(0),
-                    jobForm.getPositionTypes().get(0),
-                    jobForm.getCoreCompetencies().get(0)
-            );
-
+            Job toAdd = jobForm.convertToJob();
             jobData.add(toAdd);
 
         }
