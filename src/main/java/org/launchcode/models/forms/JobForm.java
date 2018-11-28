@@ -100,7 +100,7 @@ public class JobForm {
 
     //Employers
     public int getEmployerId() {
-        return employerId-1;
+        return employerId;
     }
 
     public void setEmployerId(int employerId) {
