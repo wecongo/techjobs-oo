@@ -71,21 +71,44 @@ public class JobForm {
     }
 
     //getters for returning the Job that was created.
+  // need to get by employeer ID not position in array
 
     public Employer getEmployer(){
-        return employers.get(this.getEmployerId());
+
+        for(int i = 0; i<=employers.size(); i++)
+            if (employers.get(i).getId()==this.employerId) {
+                return employers.get(i);
+            }
+
+      return null;
+
     }
 
     public Location getLocation(){
-        return locations.get(this.getLocationId());
+        for(int i = 0; i<=locations.size(); i++)
+            if (locations.get(i).getId()==this.locationId) {
+                return locations.get(i);
+            }
+
+        return null;
     }
 
     public PositionType getPositionType(){
-        return positionTypes.get(this.getPositionTypeId());
+        for(int i = 0; i<=positionTypes.size(); i++)
+            if (positionTypes.get(i).getId()==this.positionTypeId) {
+                return positionTypes.get(i);
+            }
+
+        return null;
     }
 
     public CoreCompetency getCoreCompetency(){
-        return coreCompetencies.get(this.getCoreCompetencyId());
+        for(int i = 0; i<=coreCompetencies.size(); i++)
+            if (coreCompetencies.get(i).getId()==this.coreCompetencyId) {
+                return coreCompetencies.get(i);
+            }
+
+        return null;
     }
 
 //Name

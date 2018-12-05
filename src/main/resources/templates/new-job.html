@@ -17,11 +17,11 @@
         </div>
 
         <div class="form-group">
-            <label th:for="employerId">Employer</label>
+            <label th:for="employer">Employer</label>
             <select th:field="*{employerId}">
                 <option th:each="employer : *{employers}"
                         th:value="${employer.id}"
-                        th:text="${employer.value}"></option>
+                        th:text="${employer.value} + ${employer.id}"></option>
             </select>
         </div>
 
@@ -29,11 +29,11 @@
 
         <!-- add Location Dropdown -->
         <div class="form-group">
-            <label th:for="locationId">Location</label>
+            <label th:for="location">Location</label>
             <select th:field="*{locationId}">
                 <option th:each="location : *{locations}"
                         th:value="${location.id}"
-                        th:text="${location.value}"></option>
+                        th:text="${location.value}+ ${location.id}"></option>
             </select>
         </div>
         <!-- add Skill Dropdown -->
@@ -42,7 +42,7 @@
             <select th:field="*{coreCompetencyId}">
                 <option th:each="corecompetency : *{coreCompetencies}"
                         th:value="${corecompetency.id}"
-                        th:text="${corecompetency.value}"></option>
+                        th:text="${corecompetency.value}+ ${corecompetency.id}"></option>
             </select>
         </div>
         <!-- add PositionType Dropdown -->
@@ -51,7 +51,7 @@
             <select th:field="*{positionTypeId}">
                 <option th:each="positiontype : *{positionTypes}"
                         th:value="${positiontype.id}"
-                        th:text="${positiontype.value}"></option>
+                        th:text="${positiontype.value}+ ${positiontype.id}"></option>
             </select>
         </div>
 

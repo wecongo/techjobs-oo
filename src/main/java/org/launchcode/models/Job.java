@@ -6,7 +6,7 @@ package org.launchcode.models;
 public class Job {
 
     private int id;
-    private static int nextId = 1;
+    private static int nextId = 1; //TODO should this be zero or 1?
 
     private String name;
     private Employer employer;
