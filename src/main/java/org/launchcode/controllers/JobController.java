@@ -64,11 +64,12 @@ public class JobController {
         // new Job and add it to the jobData data store. Then
         // redirect to the job detail view for the new Job.
 
-
-//        if (errors.hasErrors()) {
-//            return "new-job";
-//        }
-        if (!jobForm.getName().equals("")){
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "We Have Errors");
+            model.addAttribute("jobForm", jobForm);
+            return "new-job";
+       }
+        if (!jobForm.getName().equals("")&&!errors.hasErrors()) {
 // jobForm data checks out until here
             Job toAdd = jobForm.convertToJob();  //
 
